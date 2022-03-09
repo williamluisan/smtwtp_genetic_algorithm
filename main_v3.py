@@ -7,6 +7,7 @@ import copy
 
 file_loc = './data/case_1.xls'
 
+
 # excel data reading
 project = []
 file = pd.read_excel(file_loc)
