@@ -113,10 +113,13 @@ def crossover(chro_a, chro_b):
 def mutation(generation):
     # check if there's same project inside a chromosome
     new_gen = []
-
     for k, chromosome in enumerate(generation):
-        for l, gene in enumerate(chromosome):
-            if gene in chromosome:
-                
-            else:
-                continue
+        if k > 1:
+            chromosome.reverse()
+            chromosome = list(dict.fromkeys(chromosome))
+            while len(chromosome) < 6:
+                chromosome.append('X')
+                chromosome.reverse()
+        new_gen.append(chromosome)
+    
+    h.pre(new_gen)
