@@ -1,51 +1,17 @@
-import pandas as pd
+
 import pprint as pp
 import helper as h
-import genetic_algorithm as ga
+import genetic_algorithm
+import generic
 import copy
 
-file_loc = './data/case_1.xls'
-
-# excel data reading, with dict as returned item
-
-
-def read_excel():
-    project = {}
-    file = pd.read_excel(file_loc)
-    for i, j in file.iterrows():
-        if (i != 0):
-            project_name = file.iat[i, 1]
-            processing_time = int(file.iat[i, 2])
-            weight = int(file.iat[i, 3])
-            due_date = int(file.iat[i, 4])
-            project[project_name] = {
-                'p': processing_time,
-                'w': weight,
-                'd': due_date
-            }
-    return project
-
-# convert dictionary to list, for randoming solutions
-
-
-def convert_dict_to_list():
-    project = read_excel()
-
-    data = []
-    for a in project:
-        chromosome = []
-        chromosome.append(a)
-        chromosome.append(project[a]['p'])
-        chromosome.append(project[a]['w'])
-        chromosome.append(project[a]['d'])
-        for _ in range(4):
-            chromosome.append(0)
-        data.append(list(chromosome))
-    return data
-
+# class instance
+ga = genetic_algorithm.Genetic_algorithm();
+gnc = generic.Generic();
 
 # generate random solutions
-data = convert_dict_to_list()
+raw_data = gnc.read_excel();
+data = gnc.convert_dict_to_list(raw_data);
 generation = ga.generate_random_solutions(data)
 
 # calculate fitness function
@@ -53,12 +19,9 @@ gen_calculated = []
 for chromosome in generation:
     chro_calculated = ga.fitness_function(chromosome)
 
-    # wrap the caluclation of the generation
+    # wrap the calculation of the generation
     gen_calculated.append(copy.deepcopy(chro_calculated))
 
-# print('\n=========')
-# pp.pprint(gen_calculated)
-# print('=========')
 
 # create new array for chromosome and total weighted tardiness
 sort_chro = []
@@ -80,8 +43,13 @@ pp.pprint(minimum_Ob)
 # selection and crossover process for making a new generation
 next_generation_candidate = ga.selection(sorted_generation)
 
-print('\n=========')
-pp.pprint(next_generation_candidate)
-print('=========\n')
+# print('\n=========')
+# pp.pprint(next_generation_candidate)
+# print('=========\n')
 
+# mutation process
 next_generation_candidate = ga.mutation(next_generation_candidate)
+
+# print('\n=========')
+# pp.pprint(next_generation_candidate)
+# print('=========\n')
