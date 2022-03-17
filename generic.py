@@ -1,4 +1,5 @@
 import pandas as pd
+import helper as h
 
 class Generic:
 
@@ -23,7 +24,7 @@ class Generic:
     # convert dictionary to list, for randoming solutions
     def convert_dict_to_list(self, raw_data):
         project = raw_data
-
+        
         data = []
         for a in project:
             chromosome = []

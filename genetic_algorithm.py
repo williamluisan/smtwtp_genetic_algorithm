@@ -53,13 +53,9 @@ class Genetic_algorithm:
         return chromosome
 
     # selection
-    def selection(sorted_generation):
+    def selection(self, sorted_generation):
         next_gen = []
         sorted_generation_len = len(sorted_generation) - 1
-
-        print('\n=========')
-        pp.pprint(sorted_generation)
-        print('=========')
 
         # select the 2 of the best chromosome as next gen candidate
         next_gen.append(sorted_generation[0])
@@ -68,10 +64,6 @@ class Genetic_algorithm:
         for k, chromosome in enumerate(sorted_generation):
             # popping out Ob value from chromosome
             chromosome.pop()
-
-        # print('\n=========')
-        # pp.pprint(sorted_generation)
-        # print('=========')
 
         # need to make sure how many times to do crossover
         for _ in range(2):
@@ -82,7 +74,7 @@ class Genetic_algorithm:
                 rand_numb_2 = rd.randint(2, sorted_generation_len)
 
             # do crossover chromosome
-            new_chro_a, new_chro_b = crossover(
+            new_chro_a, new_chro_b = self.crossover(
                 sorted_generation[rand_numb_1], sorted_generation[rand_numb_2]
             )
 
@@ -93,20 +85,17 @@ class Genetic_algorithm:
 
 
     # crossover
-    def crossover(chro_a, chro_b):
+    def crossover(self, chro_a, chro_b):
         a = chro_a[4:]
         b = chro_b[4:]
 
         a_new = chro_a[0:4] + b
         b_new = chro_b[0:4] + a
 
-        # h.pren(a_new)
-        # h.pren(b_new)
-
         return a_new, b_new
 
     # mutation
-    def mutation(generation):
+    def mutation(self, generation):
         # check if there's same project inside a chromosome
         new_generation = []
         for k, chromosome in enumerate(generation):
