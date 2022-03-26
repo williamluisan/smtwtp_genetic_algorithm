@@ -9,19 +9,12 @@ ga = genetic_algorithm.Genetic_algorithm();
 gnc = generic.Generic();
 
 if __name__ == "__main__":
-    TT = 999999999999
-    best_solution = ''
-    counter_stop = 0
-    flag_stop = 0
-    x = 0
-    while flag_stop != 1:
-        # first random solution
+    for x in range(50):
         if x == 0:
             # generate random solutions
             raw_data = gnc.read_excel();
             data = gnc.convert_dict_to_list(raw_data);
             generation = ga.generate_random_solutions(data)
-            x += 1
         else:
             # get gene data
             gene_data_list = []
@@ -56,18 +49,7 @@ if __name__ == "__main__":
         h.pren(sorted_generation)
 
         # store the minimum Ob founded
-        if sorted_generation[0][6] < TT:
-            TT = sorted_generation[0][6]
-            best_solution = sorted_generation[0]
-        
-        if TT == TT:
-            counter_stop += 1
-        else:
-            counter_stop = 0
-        if counter_stop == 50:
-            h.pren(best_solution)
-            h.pren(TT)
-            flag_stop = 1
+        minimum_Ob = sorted_generation[0][6]
 
         # selection and crossover process for making a new generation
         next_generation_candidate = ga.selection(sorted_generation)

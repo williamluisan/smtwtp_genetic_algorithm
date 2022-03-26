@@ -1,12 +1,14 @@
 import random as rd
 import pprint as pp
+
+from pandas import array
 import helper as h
 from collections import Counter
 
 class Genetic_algorithm:
     
     # generate random solutions from excel data
-    def generate_random_solutions(self, data):
+    def generate_random_solutions(self, data: array):
         # generate random solutions
         generation = []
         for k in range(len(data)):
@@ -23,7 +25,7 @@ class Genetic_algorithm:
         wT = Weighted Tardiness
         and Ob as Total Weighted Tardiness
     """
-    def fitness_function(self, chromosome):
+    def fitness_function(self, chromosome: array):
         Ob = 0
         for k, gene in enumerate(chromosome):
             gene[7] = 0
@@ -53,7 +55,7 @@ class Genetic_algorithm:
         return chromosome
 
     # selection
-    def selection(self, sorted_generation):
+    def selection(self, sorted_generation: array):
         next_gen = []
         sorted_generation_len = len(sorted_generation) - 1
 
@@ -66,7 +68,7 @@ class Genetic_algorithm:
             chromosome.pop()
 
         # need to make sure how many times to do crossover
-        for _ in range(2):
+        for _ in range(10):
             # pick random number
             rand_numb_1 = rd.randint(2, sorted_generation_len)
             rand_numb_2 = rd.randint(2, sorted_generation_len)
@@ -85,7 +87,7 @@ class Genetic_algorithm:
 
 
     # crossover
-    def crossover(self, chro_a, chro_b):
+    def crossover(self, chro_a: array, chro_b: array):
         a = chro_a[4:]
         b = chro_b[4:]
 
@@ -95,7 +97,7 @@ class Genetic_algorithm:
         return a_new, b_new
 
     # mutation
-    def mutation(self, generation):
+    def mutation(self, generation: array):
         # check if there's same project inside a chromosome
         new_generation = []
         for k, chromosome in enumerate(generation):
