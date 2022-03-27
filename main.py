@@ -9,6 +9,7 @@ ga = genetic_algorithm.Genetic_algorithm();
 gnc = generic.Generic();
 
 if __name__ == "__main__":
+    # default total tardiness (TT)
     TT = 999999999999
     best_solution = ''
     counter_stop = 0
@@ -64,6 +65,7 @@ if __name__ == "__main__":
             counter_stop += 1
         else:
             counter_stop = 0
+            
         if counter_stop == 50:
             h.pren(best_solution)
             h.pren(TT)
