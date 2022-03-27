@@ -1,8 +1,10 @@
+import itertools
 import pprint as pp
 import helper as h
 import genetic_algorithm
 import generic
 import copy
+from itertools import permutations
 
 # class instance
 ga = genetic_algorithm.Genetic_algorithm();
@@ -37,6 +39,7 @@ if __name__ == "__main__":
 
         # calculate fitness function
         gen_calculated = []
+        
         for chromosome in generation:
             chro_calculated = ga.fitness_function(chromosome)
             # wrap the calculation of the generation
@@ -54,7 +57,7 @@ if __name__ == "__main__":
 
         # sort the sort_chro
         sorted_generation = sorted(sort_chro, key=lambda x: x[6])
-        h.pren(sorted_generation)
+        # h.pren(sorted_generation)
 
         # store the minimum Ob founded
         if sorted_generation[0][6] < TT:
