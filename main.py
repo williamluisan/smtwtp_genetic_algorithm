@@ -20,10 +20,11 @@ if __name__ == "__main__":
     while flag_stop != 1:
         # first random solution
         if x == 0:
-            # generate random solutions
+            # generate random solutions, get data from excel (data/case_1.xls)
             raw_data = gnc.read_excel();
             data = gnc.convert_dict_to_list(raw_data);
             generation = ga.generate_random_solutions(data)
+            
             x += 1
         else:
             # get gene data
@@ -57,7 +58,9 @@ if __name__ == "__main__":
 
         # sort the sort_chro
         sorted_generation = sorted(sort_chro, key=lambda x: x[6])
-        h.pren(sorted_generation)
+
+        """ uncomment line 63 if you want to see all the generated solutions"""
+        # h.pren(sorted_generation)
 
         # store the minimum Ob founded
         if sorted_generation[0][6] < TT:

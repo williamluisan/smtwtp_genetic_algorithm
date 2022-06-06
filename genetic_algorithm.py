@@ -90,10 +90,10 @@ class Genetic_algorithm:
     def crossover(self, chro_a: array, chro_b: array):
         a = chro_a[4:]
         b = chro_b[4:]
-
+        
         a_new = chro_a[0:4] + b
         b_new = chro_b[0:4] + a
-
+        
         return a_new, b_new
 
     # mutation
