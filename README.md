@@ -42,8 +42,9 @@ On this project, this is how the GA mechanism works:
 
 ## Input & Ouput
 * The program input as stated above is from the excel file `data/case_1.xls`
-![picture alt](https://raw.githubusercontent.com/williamluisan/smtwtp_genetic_algorithm/master/screenshots/excel_input.png?token=GHSAT0AAAAAABVJJSZLVF746KPGB362Q5ICYU6BNYA "Input from Excel file")
-* Expected output in terminal:
+![picture alt](https://raw.githubusercontent.com/williamluisan/smtwtp_genetic_algorithm/master/screenshots/excel_input.png?token=GHSAT0AAAAAABVJJSZLVF746KPGB362Q5ICYU6BNYA "Input from Excel file")  
+
+* Expected output in terminal:  
 ![picture alt](https://raw.githubusercontent.com/williamluisan/smtwtp_genetic_algorithm/master/screenshots/output.png?token=GHSAT0AAAAAABVJJSZKK3SFMXE7ALYNPZFQYU6BPKQ "Expected output")
 ## The Files
 * `main.py`
